@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.name }}
+spec:
+  serviceName: {{ .Values.name }}
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+              {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Values.name }}
+          image: {{ .Values.container.image }}:{{ .Values.container.version }}
+          command: {{ .Values.container.command | toJson }}
+          args: {{ .Values.container.args | toJson }}
+          imagePullPolicy: {{ .Values.container.pullPolicy }}
+          resources:
+            requests:
+              memory: {{ .Values.container.requests.memory }}
+              cpu: {{ .Values.container.requests.cpu }}
+            limits:
+              memory: {{ .Values.container.limit.memory }}
+              cpu: {{ .Values.container.limit.cpu }}
+          ports:
+            - containerPort: {{ .Values.container.ports.infinispan }}
+              name: infinispanPort
+            - containerPort: {{ .Values.container.ports.http }}
+              name: http
+            - containerPort: {{ .Values.container.ports.management }}
+              name: management
+          env:
+            - name: jgroups.dns.query
+              value: {{ .Values.name }}-headless
+            {{- range .Values.container.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: management
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            httpGet:
+              path: /health/ready
+              port: management
+          startupProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            httpGet:
+              path: /health/started
+              port: management

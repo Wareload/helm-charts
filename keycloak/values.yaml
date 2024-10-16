@@ -1,0 +1,29 @@
+name: keycloak
+replicas: 3
+imagePullSecrets: []
+container:
+  image: quay.io/keycloak/keycloak
+  version: latest
+  command: ["/opt/keycloak/bin/kc.sh", "start-dev"]
+  args: []
+  pullPolicy: IfNotPresent
+  ports:
+    http: 8080
+    management: 9990
+    infinispan: 7800
+  requests:
+    memory: 512Mi
+    cpu: 500m
+  limit:
+    memory: 2
+    cpu: 2Gi
+  env:
+    - name: KC_DB
+      value: "dev-file"
+ingress:
+  - name: public
+    host: ""
+    annotations: {}
+  - name: private
+    host: ""
+    annotations: {}
