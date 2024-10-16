@@ -40,6 +40,8 @@ spec:
           env:
             - name: jgroups.dns.query
               value: {{ .Values.name }}-headless
+            - name: KC_HEALTH_ENABLED
+              value: "true"
             {{- range .Values.container.env }}
             - name: {{ .name }}
               value: {{ .value | quote }}
@@ -48,17 +50,17 @@ spec:
             httpGet:
               path: /health/live
               port: management
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 10
           readinessProbe:
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 10
             httpGet:
               path: /health/ready
               port: management
           startupProbe:
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 10
             httpGet:
               path: /health/started
               port: management

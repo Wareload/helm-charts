@@ -9,14 +9,14 @@ container:
   pullPolicy: IfNotPresent
   ports:
     http: 8080
-    management: 9990
+    management: 9000
     infinispan: 7800
   requests:
     memory: 512Mi
     cpu: 500m
   limit:
-    memory: 2
-    cpu: 2Gi
+    memory: 2Gi
+    cpu: 2
   env:
     - name: KC_DB
       value: "dev-file"
