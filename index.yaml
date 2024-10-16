@@ -3,6 +3,22 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-10-16T19:34:27.815049817Z"
+    dependencies:
+    - condition: keycloak-config-cli.enabled
+      name: keycloak-config-cli
+      repository: ""
+      version: 6.1.6
+    description: A Helm chart for Keycloak along with the Keycloak Config CLI
+    digest: 753fadcb1c25dfbbe3956b71b55d2382b09e6acdf61f295a259e71e12e4344b2
+    icon: https://www.keycloak.org/resources/images/icon.svg
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/Wareload/helm-charts/releases/download/keycloak-0.1.1/keycloak-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-10-16T19:06:06.751323686Z"
     dependencies:
     - condition: keycloak-config-cli.enabled
@@ -72,4 +88,4 @@ entries:
     urls:
     - https://github.com/Wareload/helm-charts/releases/download/keycloak-0.1.0/keycloak-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-16T19:06:06.751369582Z"
+generated: "2024-10-16T19:34:27.81508929Z"
