@@ -3,6 +3,17 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-10-16T16:46:03.057784989Z"
+    description: A Helm chart for Kubernetes
+    digest: 42498c54179d83eeba8b935882722146fd73a6f9dedaa9ee78c13e8b6ff45fb7
+    icon: https://www.keycloak.org/resources/images/icon.svg
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/Wareload/helm-charts/releases/download/keycloak-0.1.1-rc-1/keycloak-0.1.1-rc-1.tgz
+    version: 0.1.1-rc-1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-10-16T16:27:59.951418595Z"
     description: A Helm chart for Kubernetes
     digest: 7818b744842e0d513df5c61358e0b774abbe993b4137474827a314721dff73e0
@@ -12,4 +23,4 @@ entries:
     urls:
     - https://github.com/Wareload/helm-charts/releases/download/keycloak-0.1.0/keycloak-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-16T16:27:59.951424415Z"
+generated: "2024-10-16T16:46:03.057807815Z"
