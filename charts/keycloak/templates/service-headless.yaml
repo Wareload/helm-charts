@@ -5,7 +5,7 @@ metadata:
 spec:
   ports:
     - port: {{ .Values.container.ports.infinispan }}
-      name: infinispanPort
+      name: infinispan
   clusterIP: None
   selector:
     app: {{ .Values.name }}
