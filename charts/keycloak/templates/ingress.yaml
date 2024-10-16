@@ -16,4 +16,5 @@ spec:
                 name: {{ $.Values.name }}
                 port:
                   number: {{ $.Values.container.ports.http }}
+---
 {{- end }}
