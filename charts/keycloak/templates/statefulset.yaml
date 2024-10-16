@@ -32,7 +32,7 @@ spec:
               cpu: {{ .Values.container.limit.cpu }}
           ports:
             - containerPort: {{ .Values.container.ports.infinispan }}
-              name: infinispanPort
+              name: infinispan
             - containerPort: {{ .Values.container.ports.http }}
               name: http
             - containerPort: {{ .Values.container.ports.management }}
