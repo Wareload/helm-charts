@@ -27,3 +27,6 @@ ingress:
   - name: private
     host: ""
     annotations: {}
+
+keycloak-config-cli:
+  enabled: false
