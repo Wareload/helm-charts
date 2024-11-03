@@ -53,21 +53,23 @@ spec:
                   name: {{ .secretName }}
                   key: {{ .secretKey }}
             {{- end }}
+          {{ if .Values.container.probes.enabled }}
           livenessProbe:
             httpGet:
               path: /health/live
               port: management
-            initialDelaySeconds: 30
-            periodSeconds: 10
+            initialDelaySeconds: {{ .Values.container.probes.delay}}
+            periodSeconds: {{ .Values.container.probes.period}}
           readinessProbe:
-            initialDelaySeconds: 30
-            periodSeconds: 10
+            initialDelaySeconds: {{ .Values.container.probes.delay}}
+            periodSeconds: {{ .Values.container.probes.period}}
             httpGet:
               path: /health/ready
               port: management
           startupProbe:
-            initialDelaySeconds: 30
-            periodSeconds: 10
+            initialDelaySeconds: {{ .Values.container.probes.delay}}
+            periodSeconds: {{ .Values.container.probes.period}}
             httpGet:
               path: /health/started
               port: management
+          {{ end }}

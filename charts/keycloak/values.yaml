@@ -24,6 +24,10 @@ container:
     - name: SECRET_ENV_VAR
       secretName: my-secret
       secretKey: my-secret-key
+  probes:
+    enabled: true
+    delay: 10
+    period: 30
 ingress:
   - name: public
     host: ""
