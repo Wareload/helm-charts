@@ -3,7 +3,7 @@ name: keycloak
 description: A Helm chart for Keycloak along with the Keycloak Config CLI
 icon: https://www.keycloak.org/resources/images/icon.svg
 type: application
-version: 0.1.2
+version: 0.1.3
 appVersion: "1.16.0"
 
 dependencies:

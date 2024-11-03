@@ -20,6 +20,10 @@ container:
   env:
     - name: KC_DB
       value: "dev-file"
+  secretEnv:
+    - name: SECRET_ENV_VAR
+      secretName: my-secret
+      secretKey: my-secret-key
 ingress:
   - name: public
     host: ""
